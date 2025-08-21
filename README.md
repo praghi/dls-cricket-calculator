@@ -4,7 +4,58 @@ A modern **Duckworth–Lewis–Stern (DLS) calculator** for limited-overs cricke
 Built with **FastAPI (backend)** and **Streamlit (frontend)**.
 
 # 📜 Background – Duckworth–Lewis–Stern (DLS) Method
-The Duckworth–Lewis method (D/L) was introduced in 1997 by two English statisticians, Frank Duckworth and Tony Lewis, to address fairness in rain-affected limited-overs cricket matches.Before D/L, cricket used methods like the Average Run Rate and Most Productive Overs (MPO), but both were flawed and often produced unfair results.The D/L method was formally adopted by the International Cricket Council (ICC) in 1999, making its debut in the 1999 Cricket World Cup.In 2014, the model was updated to Duckworth–Lewis–Stern (DLS), when Professor Steven Stern became the custodian and refined the system to better fit modern high-scoring cricket.Today, DLS remains the official ICC method for resetting targets in rain-interrupted One Day Internationals (ODIs) and T20 matches. 
+The Duckworth–Lewis method (D/L) was introduced in 1997 by two English statisticians, Frank Duckworth and Tony Lewis, to address fairness in rain-affected limited-overs cricket matches.Before D/L, cricket used methods like the Average Run Rate and Most Productive Overs (MPO), but both were flawed and often produced unfair results.
+
+The D/L method was formally adopted by the International Cricket Council (ICC) in 1999, making its debut in the 1999 Cricket World Cup.In 2014, the model was updated to Duckworth–Lewis–Stern (DLS), when Professor Steven Stern became the custodian and refined the system to better fit modern high-scoring cricket.
+
+Today, DLS remains the official ICC method for resetting targets in rain-interrupted One Day Internationals (ODIs) and T20 matches. 
+
+
+# 📖 DLS Formula
+
+The DLS formula calculates the revised target score based on resources remaining (overs left & wickets lost).
+
+**Par Score Formula**:
+
+Par Score = Team 1 Score × Resources Remaining for Team 2 / Resources at Start of Team 1 Innings
+
+**Target Score for Team 2**:
+
+Target Score = Par Score + 1
+
+
+Where:
+
+**Resources Remaining**: Determined from DLS table using overs left and wickets lost
+
+**Resources at Start of Innings**: Usually 100%
+
+**Example**:
+
+- Team 1 scores 250 in a 50-over ODI
+
+- Team 2 has 30 overs left and 3 wickets lost
+
+- Resources remaining from DLS table = 75%
+
+- Par score =  250 × 75 / 100 =187.5 → Target = 188
+
+
+# 📊 Data Dictionary
+
+DLS Tables CSV Format
+
+| Column      | Description                                         |
+| ----------- | --------------------------------------------------- |
+| overs_left | Number of overs remaining for the innings           |
+| w0 to w9    | Percentage resources remaining for 0–9 wickets lost |
+
+**Files**:
+
+dls_odi.csv → 50-over ODI matches
+
+dls_t20.csv → 20-over T20 matches
+
 
 # 🎯 Objective
 
@@ -62,7 +113,6 @@ uvicorn backend.main:app --reload
 ```bash
 streamlit run frontend/app.py
 ```
-
 
 
 
