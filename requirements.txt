@@ -1,0 +1,14 @@
+# Web frameworks
+fastapi==0.109.0
+uvicorn
+streamlit
+
+#Testing/Coding 
+notebook
+
+# Data handling
+pandas
+numpy
+
+# Data validation
+pydantic==2.3.0
